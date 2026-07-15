@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h1>Hotel Management</h1>
+
+        <a href="index.html">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="booking.html">Booking</a>
+        <a href="payment.html">Payment</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h2>Payment System</h2>
+
+    <!-- PAYMENT INPUTS -->
+    <input id="bookingId" placeholder="Booking ID">
+    <input id="customerName" placeholder="Customer Name">
+    <input id="amount" placeholder="Amount">
+
+    <button onclick="addPayment()">Pay</button>
+
+    <!-- PAYMENT LIST -->
+    <div id="paymentList"></div>
+
+</div>
+
+<!-- JS CONNECTION -->
+<script src="api.js"></script>
+<script src="payment.js"></script>
+
+<script>
+loadPayments();
+</script>
+
+</body>
+</html>

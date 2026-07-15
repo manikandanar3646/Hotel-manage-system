@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Booking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h1>Hotel Management</h1>
+
+        <a href="index.html">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="register.html">Register</a>
+        <a href="booking.html">Booking</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <form id="bookingForm">
+
+        <h2>Book Room</h2>
+
+        <!-- Customer Name (ADD THIS - missing in your form) -->
+        <input id="customerName" placeholder="Customer Name" required>
+
+        <!-- Room dropdown (you already have this) -->
+        <select id="roomId" required>
+            <option value="">Select Room</option>
+        </select>
+
+        <input type="date" id="checkIn" required>
+        <input type="date" id="checkOut" required>
+
+        <!-- Total amount (optional but useful) -->
+        <input id="totalAmount" placeholder="Total Amount" required>
+
+        <button type="submit">Confirm Booking</button>
+
+    </form>
+
+    <!-- Booking List -->
+    <div id="bookingList"></div>
+
+</div>
+
+<!-- ✅ API + JS CONNECTION -->
+<script src="api.js"></script>
+<script src="booking.js"></script>
+
+<script>
+loadBookings();
+loadRoomsToDropdown(); // (we will create this in booking.js)
+</script>
+
+</body>
+</html>
