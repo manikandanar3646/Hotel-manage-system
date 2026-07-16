@@ -2,51 +2,81 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Rooms</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>Rooms</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <header>
-    <nav>
-        <h1>Hotel Management</h1>
 
-        <a href="index.html">Home</a>
-        <a href="rooms.html">Rooms</a>
-        <a href="register.html">Register</a>
-        <a href="booking.html">Booking</a>
-        <a href="login.html">Login</a>
-    </nav>
+<nav>
+
+<h1>Hotel Management</h1>
+
+<a href="index.html">Home</a>
+<a href="rooms.html">Rooms</a>
+<a href="booking.html">Booking</a>
+<a href="contact.html">Contact</a>
+
+<span id="navAuthSlot">
+<a href="login.html">Login</a>
+</span>
+
+</nav>
+
 </header>
 
 <div class="container">
 
-    <h2>Available Rooms</h2>
+<h2>Available Rooms</h2>
 
-    <!-- ✅ ADD ROOM FORM -->
-    <div class="room-form">
+<div class="room-form">
 
-        <input id="roomNumber" placeholder="Room Number">
-        <input id="type" placeholder="Type">
-        <input id="price" placeholder="Price">
+<input
+id="roomNumber"
+placeholder="Room Number">
 
-        <button onclick="addRoom()">Add Room</button>
+<input
+id="roomType"
+placeholder="Room Type">
 
-    </div>
+<input
+id="capacity"
+type="number"
+placeholder="Capacity">
 
-    <!-- ✅ ROOM LIST -->
-    <div id="roomlist"></div>
+<input
+id="price"
+type="number"
+placeholder="Price">
+
+<input
+id="imageUrl"
+placeholder="Image URL">
+
+<button onclick="addRoom()">
+Add Room
+</button>
 
 </div>
 
-<!-- ✅ SCRIPTS (IMPORTANT ORDER) -->
+<hr>
+
+<div id="roomlist"></div>
+
+</div>
+
 <script src="api.js"></script>
-<script src="rooms.js"></script>
+<script src="script.js"></script>
+<script src="room.js"></script>
 
 </body>
+
 </html>

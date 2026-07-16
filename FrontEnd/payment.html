@@ -2,51 +2,104 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Payment</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Payment</title>
+
+<link rel="stylesheet"
+href="style.css">
+
 </head>
 
 <body>
 
 <header>
-    <nav>
-        <h1>Hotel Management</h1>
 
-        <a href="index.html">Home</a>
-        <a href="rooms.html">Rooms</a>
-        <a href="booking.html">Booking</a>
-        <a href="payment.html">Payment</a>
-        <a href="login.html">Login</a>
-    </nav>
+<nav>
+
+<h1>Hotel Management</h1>
+
+<a href="index.html">Home</a>
+<a href="rooms.html">Rooms</a>
+<a href="booking.html">Booking</a>
+<a href="contact.html">Contact</a>
+
+<span id="navAuthSlot">
+<a href="login.html">Login</a>
+</span>
+
+</nav>
+
 </header>
 
 <div class="container">
 
-    <h2>Payment System</h2>
+<form id="paymentForm">
 
-    <!-- PAYMENT INPUTS -->
-    <input id="bookingId" placeholder="Booking ID">
-    <input id="customerName" placeholder="Customer Name">
-    <input id="amount" placeholder="Amount">
+<h2>Payment</h2>
 
-    <button onclick="addPayment()">Pay</button>
+<input
+type="number"
+id="bookingId"
+placeholder="Booking ID"
+required>
 
-    <!-- PAYMENT LIST -->
-    <div id="paymentList"></div>
+<input
+type="number"
+id="amount"
+placeholder="Amount"
+required>
+
+<select id="paymentMethod">
+
+<option value="Cash">
+
+Cash
+
+</option>
+
+<option value="UPI">
+
+UPI
+
+</option>
+
+<option value="Card">
+
+Card
+
+</option>
+
+</select>
+
+<button
+type="button"
+onclick="addPayment()">
+
+Pay Now
+
+</button>
+
+</form>
+
+<hr>
+
+<h2>Payment History</h2>
+
+<div id="paymentList">
 
 </div>
 
-<!-- JS CONNECTION -->
+</div>
+
 <script src="api.js"></script>
+<script src="script.js"></script>
 <script src="payment.js"></script>
 
-<script>
-loadPayments();
-</script>
-
 </body>
+
 </html>

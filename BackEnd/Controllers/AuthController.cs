@@ -28,12 +28,13 @@ namespace hotel_management_system.Controllers
                 return Unauthorized("Invalid Email or Password");
             }
 
-            return Ok(new
-            {
-                message = "Login Successful",
-                fullname = user.Fullname,
-                role = user.Role
-            });
+           return Ok(new
+           {
+             userId = user.UserId,
+             fullname = user.Fullname,
+             role = user.Role,
+             message = "Login Successful"
+           });
         }
     }
 }

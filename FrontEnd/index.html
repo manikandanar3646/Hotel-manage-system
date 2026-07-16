@@ -1,34 +1,56 @@
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Hotel Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <nav>
-            <h1>hotel management system</h1>
-            <a href="index.html">Home</a>
-            <a href="rooms.html">Rooms</a>
-            <a href="register.html">Register</a>
-            <a href="booking.html">Booking</a>
+
+<header>
+
+    <nav>
+
+        <h1>Hotel Management</h1>
+
+        <a href="index.html">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="booking.html">Booking</a>
+        <a href="contact.html">Contact</a>
+
+        <span id="navAuthSlot">
             <a href="login.html">Login</a>
-        </nav>
-    </header>
-    
-    <section class="hero">
+        </span>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
     <div class="hero-content">
-        <h2>Welcome to Our Hotel</h2>
+
+        <h2>Welcome To Our Hotel</h2>
+
         <p>
-            Experience the best hospitality and luxury rooms.
+            Experience luxury rooms with world-class hospitality.
         </p>
+
         <button onclick="goToRooms()">
             View Rooms
         </button>
+
     </div>
 
 </section>
-    <script src="script.js"></script>
+
+<script src="api.js"></script>
+<script src="script.js"></script>
+
 </body>
+
 </html>

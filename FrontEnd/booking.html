@@ -2,65 +2,94 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Booking</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Booking</title>
+
+<link rel="stylesheet"
+href="style.css">
+
 </head>
 
 <body>
 
 <header>
-    <nav>
-        <h1>Hotel Management</h1>
 
-        <a href="index.html">Home</a>
-        <a href="rooms.html">Rooms</a>
-        <a href="register.html">Register</a>
-        <a href="booking.html">Booking</a>
-        <a href="login.html">Login</a>
-    </nav>
+<nav>
+
+<h1>Hotel Management</h1>
+
+<a href="index.html">Home</a>
+<a href="rooms.html">Rooms</a>
+<a href="booking.html">Booking</a>
+<a href="contact.html">Contact</a>
+
+<span id="navAuthSlot">
+<a href="login.html">Login</a>
+</span>
+
+</nav>
+
 </header>
 
 <div class="container">
 
-    <form id="bookingForm">
+<form id="bookingForm">
 
-        <h2>Book Room</h2>
+<h2>Book Room</h2>
 
-        <!-- Customer Name (ADD THIS - missing in your form) -->
-        <input id="customerName" placeholder="Customer Name" required>
+<select id="roomId" required>
 
-        <!-- Room dropdown (you already have this) -->
-        <select id="roomId" required>
-            <option value="">Select Room</option>
-        </select>
+<option value="">
 
-        <input type="date" id="checkIn" required>
-        <input type="date" id="checkOut" required>
+Select Room
 
-        <!-- Total amount (optional but useful) -->
-        <input id="totalAmount" placeholder="Total Amount" required>
+</option>
 
-        <button type="submit">Confirm Booking</button>
+</select>
 
-    </form>
+<input
+type="date"
+id="checkIn"
+required>
 
-    <!-- Booking List -->
-    <div id="bookingList"></div>
+<input
+type="date"
+id="checkOut"
+required>
+
+<input
+type="number"
+id="totalAmount"
+placeholder="Total Amount"
+required>
+
+<button type="submit">
+
+Confirm Booking
+
+</button>
+
+</form>
+
+<hr>
+
+<h2>Booking History</h2>
+
+<div id="bookingList">
 
 </div>
 
-<!-- ✅ API + JS CONNECTION -->
+</div>
+
 <script src="api.js"></script>
+<script src="script.js"></script>
 <script src="booking.js"></script>
 
-<script>
-loadBookings();
-loadRoomsToDropdown(); // (we will create this in booking.js)
-</script>
-
 </body>
+
 </html>

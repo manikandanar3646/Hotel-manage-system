@@ -1,44 +1,87 @@
+// ================================
+// rooms.js
+// ================================
+
 async function loadRooms() {
+
     try {
-        const rooms = await getData("rooms");
+
+        const rooms = await getData("Rooms");
 
         const container = document.getElementById("roomlist");
+
+        if (!container) return;
+
         container.innerHTML = "";
 
-        rooms.forEach(r => {
+        rooms.forEach(room => {
+
             container.innerHTML += `
-                <div class="room-card">
-                    <h3>Room: ${r.roomNumber}</h3>
-                    <p>Type: ${r.type}</p>
-                    <p>Price: ₹${r.price}</p>
-                </div>
+
+            <div class="room">
+
+                <h3>Room ${room.roomNO}</h3>
+
+                <p>Type : ${room.roomType}</p>
+
+                <p>Capacity : ${room.capacity}</p>
+
+                <p>Price : ₹${room.price}</p>
+
+                <p>Status : ${room.isAvailable ? "Available" : "Booked"}</p>
+
+                <button onclick="bookRoom(${room.roomId})">
+                    Book
+                </button>
+
+            </div>
+
             `;
+
         });
 
-    } catch (err) {
-        console.error("Failed to load rooms", err);
     }
+
+    catch (err) {
+
+        console.error(err);
+
+    }
+
 }
 
 async function addRoom() {
 
+    alert("addRoom() called");
+
     const room = {
-        roomNumber: document.getElementById("roomNumber").value,
-        type: document.getElementById("type").value,
-        price: parseFloat(document.getElementById("price").value)
+        roomNO: document.getElementById("roomNumber").value,
+        roomType: document.getElementById("roomType").value,
+        capacity: Number(document.getElementById("capacity").value),
+        price: Number(document.getElementById("price").value),
+        imageUrl: document.getElementById("imageUrl").value,
+        isAvailable: true
     };
 
+    console.log(room);
+
     try {
-        await postData("rooms", room);
-
-        alert("Room Added!");
-
-        loadRooms(); // refresh UI
-
-    } catch (err) {
-        console.error("Add room failed", err);
+        await postData("Rooms", room);
+        alert("Room Added Successfully");
+        loadRooms();
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
     }
 }
 
-// AUTO LOAD ON PAGE OPEN
-loadRooms();
+function bookRoom(roomId) {
+
+    localStorage.setItem("roomId", roomId);
+
+    window.location.href = "booking.html";
+
+}
+
+window.addEventListener("load", loadRooms);

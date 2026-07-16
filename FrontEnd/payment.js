@@ -1,41 +1,83 @@
-async function loadPayments() {
-    try {
-        const payments = await getData("payments");
+// ================================
+// payment.js
+// ================================
 
-        let container = document.getElementById("paymentList");
+async function loadPayments() {
+
+    try {
+
+        const payments = await getData("Payments");
+
+        const container = document.getElementById("paymentList");
+
+        if (!container) return;
+
         container.innerHTML = "";
 
-        payments.forEach(p => {
+        payments.forEach(payment => {
+
             container.innerHTML += `
-                <div class="card">
-                    <h3>${p.customerName}</h3>
-                    <p>Booking ID: ${p.bookingId}</p>
-                    <p>Amount: ₹${p.amount}</p>
-                    <p>Status: ${p.paymentStatus}</p>
-                </div>
+
+            <div class="room">
+
+                <h3>Payment #${payment.paymentId}</h3>
+
+                <p>Booking ID : ${payment.bookingId}</p>
+
+                <p>Amount : ₹${payment.amount}</p>
+
+                <p>Method : ${payment.paymentMethod}</p>
+
+                <p>Status : ${payment.paymentStatus}</p>
+
+                <p>Date : ${payment.paymentDate}</p>
+
+            </div>
+
             `;
+
         });
 
-    } catch (error) {
-        console.error("Error loading payments:", error);
     }
+
+    catch (err) {
+
+        console.error(err);
+
+    }
+
 }
+
 async function addPayment() {
 
     const payment = {
-        bookingId: parseInt(document.getElementById("bookingId").value),
-        customerName: document.getElementById("customerName").value,
-        amount: parseFloat(document.getElementById("amount").value)
+
+        bookingId: Number(document.getElementById("bookingId").value),
+
+        amount: Number(document.getElementById("amount").value),
+
+        paymentMethod: document.getElementById("paymentMethod").value,
+
+        paymentStatus: "Paid"
+
     };
 
     try {
-        await postData("payments", payment);
 
-        alert("Payment Successful!");
+        await postData("Payments", payment);
 
-        loadPayments(); // refresh UI
+        alert("Payment Successful");
 
-    } catch (error) {
-        console.error("Payment error:", error);
+        loadPayments();
+
     }
+
+    catch (err) {
+
+        alert(err.message);
+
+    }
+
 }
+
+window.onload = loadPayments;

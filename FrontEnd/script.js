@@ -1,311 +1,205 @@
-// ===============================
+// ==========================================
 // Hotel Management System
 // script.js
-// ===============================
+// ==========================================
 
-const API = "https://localhost:5001/api";
+// ------------------------------
+// Navigation Login State
+// ------------------------------
+
+function updateNavAuthState() {
+
+    const nav = document.getElementById("navAuthSlot");
+
+    if (!nav) return;
+
+    const fullname = localStorage.getItem("fullname");
+
+    if (fullname) {
+
+        nav.innerHTML = `
+            <span>Welcome, ${fullname}</span>
+            <a href="#" id="logoutBtn">Logout</a>
+        `;
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener("click", logout);
+
+    }
+    else {
+
+        nav.innerHTML = `<a href="login.html">Login</a>`;
+
+    }
+
+}
+
+updateNavAuthState();
 
 
-// ===============================
-// HOME PAGE
-// ===============================
+// ------------------------------
+// Logout
+// ------------------------------
+
+function logout(e) {
+
+    if (e) e.preventDefault();
+
+    localStorage.clear();
+
+    window.location.href = "login.html";
+
+}
+
+
+// ------------------------------
+// Home Button
+// ------------------------------
 
 function goToRooms() {
+
     window.location.href = "rooms.html";
-}
-
-
-// ===============================
-// LOAD ROOMS
-// ===============================
-
-function loadRooms() {
-
-    fetch(`${API}/Rooms`)
-
-        .then(response => response.json())
-
-        .then(data => {
-
-            let output = "";
-
-            data.forEach(room => {
-
-                output += `
-                    <div class="room">
-
-                        <h3>Room Number : ${room.roomNO}</h3>
-
-                        <p>Room Type : ${room.roomType}</p>
-
-                        <p>Capacity : ${room.capacity}</p>
-
-                        <p>Price : ₹${room.price}</p>
-
-                        <p>Status : ${room.isAvailable ? "Available" : "Booked"}</p>
-
-                        <button onclick="bookRoom(${room.roomId})">
-                            Book Now
-                        </button>
-
-                    </div>
-                `;
-
-            });
-
-            document.getElementById("roomlist").innerHTML = output;
-
-        })
-
-        .catch(error => {
-
-            console.log(error);
-
-        });
-
-}
-
-if (window.location.pathname.includes("rooms.html")) {
-
-    loadRooms();
 
 }
 
 
-// ===============================
-// SAVE ROOM ID
-// ===============================
-
-function bookRoom(roomId) {
-
-    localStorage.setItem("roomId", roomId);
-
-    window.location.href = "booking.html";
-
-}
-
-
-// ===============================
-// BOOK ROOM
-// ===============================
-
-const bookingForm = document.getElementById("bookingForm");
-
-if (bookingForm) {
-
-    bookingForm.addEventListener("submit", async function (e) {
-
-        e.preventDefault();
-
-        const booking = {
-
-            userId: 1,
-
-            roomId: Number(localStorage.getItem("roomId")),
-
-            checkInDate: document.getElementById("checkIn").value,
-
-            checkOutDate: document.getElementById("checkOut").value,
-
-            totalAmount: 5000,
-
-            bookingStatus: "Confirmed"
-
-        };
-
-        const response = await fetch(`${API}/Bookings`, {
-
-            method: "POST",
-
-            headers: {
-
-                "Content-Type": "application/json"
-
-            },
-
-            body: JSON.stringify(booking)
-
-        });
-
-        if (response.ok) {
-
-            alert("Booking Successful");
-
-            localStorage.removeItem("roomId");
-
-            window.location.href = "rooms.html";
-
-        }
-        else {
-
-            alert("Booking Failed");
-
-        }
-
-    });
-
-}
-
-
-// ===============================
-// REGISTER USER
-// ===============================
+// ------------------------------
+// Register
+// ------------------------------
 
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
 
-    registerForm.addEventListener("submit", async function (e) {
+    registerForm.addEventListener("submit", registerUser);
 
-        e.preventDefault();
+}
 
-        const user = {
+async function registerUser(e) {
 
-            fullname: document.getElementById("name").value,
+    e.preventDefault();
 
-            email: document.getElementById("email").value,
+    const user = {
 
-            passwordHash: document.getElementById("password").value,
+        fullname: document.getElementById("name").value.trim(),
 
-            role: "User"
+        email: document.getElementById("email").value.trim(),
 
-        };
+        passwordHash: document.getElementById("password").value,
 
-        const response = await fetch(`${API}/Users`, {
+        role: "User"
 
-            method: "POST",
+    };
 
-            headers: {
+    try {
 
-                "Content-Type": "application/json"
+        await postData("Users", user);
 
-            },
+        alert("Registration Successful");
 
-            body: JSON.stringify(user)
+        window.location.href = "login.html";
 
-        });
+    }
 
-        if (response.ok) {
+    catch (error) {
 
-            alert("Registration Successful");
+        alert(error.message);
 
-            window.location.href = "login.html";
-
-        }
-        else {
-
-            alert("Registration Failed");
-
-        }
-
-    });
+    }
 
 }
 
 
-// ===============================
-// LOGIN
-// ===============================
+// ------------------------------
+// Login
+// ------------------------------
 
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
-    loginForm.addEventListener("submit", async function (e) {
+    loginForm.addEventListener("submit", loginUser);
 
-        e.preventDefault();
+}
 
-        const login = {
+async function loginUser(e) {
 
-            email: document.getElementById("email").value,
+    e.preventDefault();
 
-            password: document.getElementById("password").value
+    const login = {
 
-        };
+        email: document.getElementById("email").value.trim(),
 
-        const response = await fetch(`${API}/Auth/login`, {
+        password: document.getElementById("password").value
 
-            method: "POST",
+    };
 
-            headers: {
+    try {
 
-                "Content-Type": "application/json"
+        const result = await postData("Auth/login", login);
 
-            },
+        localStorage.setItem("userId", result.userId);
 
-            body: JSON.stringify(login)
+        localStorage.setItem("fullname", result.fullname);
 
-        });
+        localStorage.setItem("role", result.role);
 
-        if (response.ok) {
+        alert(result.message);
 
-            const result = await response.json();
+        window.location.href = "index.html";
 
-            alert(result.message);
+    }
 
-            window.location.href = "index.html";
+    catch {
 
-        }
-        else {
+        alert("Invalid Email or Password");
 
-            alert("Invalid Email or Password");
-
-        }
-
-    });
+    }
 
 }
 
 
-// ===============================
-// CONTACT FORM
-// ===============================
+// ------------------------------
+// Contact Form
+// ------------------------------
 
 const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
 
-    contactForm.addEventListener("submit", async function (e) {
+    contactForm.addEventListener("submit", sendMessage);
 
-        e.preventDefault();
+}
 
-        const contact = {
+async function sendMessage(e) {
 
-            name: document.getElementById("name").value,
+    e.preventDefault();
 
-            email: document.getElementById("email").value,
+    const contact = {
 
-            message: document.getElementById("message").value
+        name: document.getElementById("name").value,
 
-        };
+        email: document.getElementById("email").value,
 
-        const response = await fetch(`${API}/ContactMessages`, {
+        message: document.getElementById("message").value
 
-            method: "POST",
+    };
 
-            headers: {
+    try {
 
-                "Content-Type": "application/json"
+        await postData("ContactMessages", contact);
 
-            },
+        alert("Message Sent Successfully");
 
-            body: JSON.stringify(contact)
+        contactForm.reset();
 
-        });
+    }
 
-        if (response.ok) {
+    catch {
 
-            alert("Message Sent Successfully");
+        alert("Unable to send message.");
 
-            contactForm.reset();
-
-        }
-        else {
-
-            alert("Failed to Send Message");
-
-        }
-
-    });
+    }
 
 }

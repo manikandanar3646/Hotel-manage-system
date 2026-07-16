@@ -1,926 +1,372 @@
-/* ===================================================
+/* ==========================
    HOTEL MANAGEMENT SYSTEM
-   STYLE.CSS
-   PART 1 (Reset, Body, Navbar, Hero, Forms)
-=================================================== */
-
-
-/* =========================
-   RESET
-========================= */
+========================== */
 
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
 }
-
-
-/* =========================
-   BODY
-========================= */
 
 body{
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    color: white;
-
-    background-image:
-        linear-gradient(rgba(0,0,0,0.72),
-        rgba(0,0,0,0.72)),
-        url("hotel.jpg");
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    background-attachment: fixed;
-
-    min-height: 100vh;
+    background:#f4f6f9;
+    color:#333;
 }
 
-
-/* =========================
+/* ==========================
    NAVBAR
-========================= */
+========================== */
 
 header{
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    background: #002b4f;
-
-    padding: 18px 40px;
-
-    z-index: 1000;
-
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    background:#1e3a8a;
+    padding:15px;
+    color:white;
 }
-
 
 nav{
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
 }
-
 
 nav h1{
-
-    color: white;
-
-    font-size: 32px;
-
-    margin-right: 40px;
-
-    letter-spacing: 1px;
+    font-size:28px;
 }
-
 
 nav a{
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    transition: 0.3s ease;
+    color:white;
+    text-decoration:none;
+    margin-left:18px;
+    font-weight:bold;
 }
-
 
 nav a:hover{
-
-    color: gold;
+    color:#ffd54f;
 }
 
+#navAuthSlot{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
 
-/* =========================
-   HERO SECTION
-========================= */
+/* ==========================
+   HERO
+========================== */
 
 .hero{
-
-    width: 100%;
-
-    height: 100vh;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    padding: 20px;
+    height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+               url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-position:center;
+    color:white;
 }
 
-
-.hero-content{
-
-    max-width: 850px;
+.hero h2{
+    font-size:52px;
+    margin-bottom:20px;
 }
 
-
-.hero-content h2{
-
-    font-size: 68px;
-
-    font-weight: bold;
-
-    margin-bottom: 25px;
-
-    color: gold;
+.hero p{
+    font-size:22px;
+    margin-bottom:30px;
 }
 
+.hero button{
 
-.hero-content p{
+    background:#ff9800;
 
-    font-size: 24px;
+    border:none;
 
-    line-height: 1.7;
+    color:white;
 
-    margin-bottom: 35px;
+    padding:15px 40px;
+
+    font-size:18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
 }
 
+.hero button:hover{
 
-.hero-content button{
+    background:#f57c00;
 
-    width: auto;
-
-    padding: 16px 45px;
-
-    border-radius: 40px;
-
-    font-size: 18px;
 }
 
-
-/* =========================
+/* ==========================
    CONTAINER
-========================= */
+========================== */
 
 .container{
 
-    width: 90%;
+    width:90%;
 
-    max-width: 1200px;
+    max-width:1100px;
 
-    margin: auto;
+    margin:40px auto;
 
-    padding-top: 140px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex-direction: column;
-
-    animation: fadeIn .8s ease;
 }
 
-
-/* =========================
-   PAGE TITLES
-========================= */
-
-.container h1{
-
-    font-size: 42px;
-
-    margin-bottom: 15px;
-
-    text-align: center;
-}
-
-
-.container h2{
-
-    color: gold;
-
-    font-size: 34px;
-
-    margin-bottom: 25px;
-
-    text-align: center;
-}
-
-
-/* =========================
-   FORM DESIGN
-========================= */
+/* ==========================
+   FORM
+========================== */
 
 form{
 
-    width: 420px;
+    background:white;
 
-    background: rgba(0,0,0,0.78);
+    padding:30px;
 
-    padding: 40px;
+    border-radius:10px;
 
-    border-radius: 18px;
+    box-shadow:0 0 15px rgba(0,0,0,.15);
 
-    backdrop-filter: blur(8px);
-
-    box-shadow: 0 0 30px rgba(255,215,0,.18);
-
-    margin-top: 25px;
 }
-
 
 form h2{
 
-    text-align: center;
+    margin-bottom:20px;
 
-    margin-bottom: 30px;
+    text-align:center;
 
-    color: gold;
-
-    font-size: 32px;
 }
 
+input,
+select,
+textarea{
 
-/* =========================
-   INPUTS
-========================= */
+    width:100%;
 
-input{
+    padding:12px;
 
-    width: 100%;
+    margin-bottom:18px;
 
-    padding: 15px;
+    border:1px solid #ccc;
 
-    margin-bottom: 20px;
+    border-radius:6px;
 
-    border: none;
+    font-size:16px;
 
-    border-radius: 8px;
-
-    font-size: 15px;
-
-    background: white;
-
-    color: black;
 }
-
-
-input::placeholder{
-
-    color: #555;
-}
-
-
-input:focus{
-
-    outline: 2px solid gold;
-}
-
-
-/* =========================
-   TEXTAREA
-========================= */
 
 textarea{
 
-    width: 100%;
+    resize:vertical;
 
-    min-height: 150px;
+    min-height:120px;
 
-    padding: 15px;
-
-    margin-bottom: 20px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    resize: vertical;
-
-    font-size: 15px;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    background: white;
-
-    color: black;
 }
-
-
-textarea::placeholder{
-
-    color: #555;
-}
-
-
-textarea:focus{
-
-    outline: 2px solid gold;
-}
-
-
-/* =========================
-   SELECT
-========================= */
-
-select{
-
-    width: 100%;
-
-    padding: 15px;
-
-    margin-bottom: 20px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    font-size: 15px;
-
-    background: white;
-
-    color: black;
-}
-
-
-select:focus{
-
-    outline: 2px solid gold;
-}
-
-
-/* =========================
-   BUTTONS
-========================= */
 
 button{
 
-    width: 100%;
+    width:100%;
 
-    padding: 15px;
+    padding:13px;
 
-    border: none;
+    background:#1e3a8a;
 
-    border-radius: 8px;
+    color:white;
 
-    background: gold;
+    border:none;
 
-    color: black;
+    border-radius:6px;
 
-    font-size: 17px;
+    cursor:pointer;
 
-    font-weight: bold;
+    font-size:17px;
 
-    cursor: pointer;
-
-    transition: all .3s ease;
 }
-
 
 button:hover{
 
-    background: white;
+    background:#16306f;
 
-    transform: scale(1.03);
-
-    box-shadow: 0 0 15px gold;
 }
-/* ===================================================
-   HOTEL MANAGEMENT SYSTEM
-   STYLE.CSS
-   PART 2 (Room Cards, Booking, Contact, Animations)
-=================================================== */
 
+/* ==========================
+   ROOM ADD FORM
+========================== */
 
-/* =========================
-   ROOM LIST
-========================= */
+.room-form{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:15px;
+
+    margin-bottom:30px;
+
+}
+
+/* ==========================
+   ROOM GRID
+========================== */
 
 #roomlist{
 
-    width: 100%;
+    display:grid;
 
-    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 
-    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap:20px;
 
-    gap: 30px;
-
-    margin-top: 40px;
-
-    margin-bottom: 40px;
 }
-
-
-/* =========================
-   ROOM CARD
-========================= */
 
 .room{
 
-    background: rgba(0,0,0,.80);
+    background:white;
 
-    border-radius: 15px;
+    border-radius:10px;
 
-    padding: 25px;
+    padding:20px;
 
-    border: 1px solid rgba(255,255,255,.15);
+    box-shadow:0 0 10px rgba(0,0,0,.15);
 
-    box-shadow: 0 0 15px rgba(0,0,0,.4);
+    transition:.3s;
 
-    transition: all .35s ease;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
-    animation: slideUp .8s ease;
 }
-
 
 .room:hover{
 
-    transform: translateY(-8px);
+    transform:translateY(-5px);
 
-    box-shadow: 0 0 25px rgba(255,215,0,.4);
-
-    border-color: gold;
 }
-
-
-/* =========================
-   ROOM IMAGE
-========================= */
-
-.room img{
-
-    width: 100%;
-
-    height: 220px;
-
-    object-fit: cover;
-
-    border-radius: 12px;
-
-    margin-bottom: 18px;
-}
-
-
-/* =========================
-   ROOM TITLE
-========================= */
 
 .room h3{
 
-    color: gold;
+    color:#1e3a8a;
 
-    font-size: 24px;
+    margin-bottom:15px;
 
-    margin-bottom: 18px;
 }
-
-
-/* =========================
-   ROOM DETAILS
-========================= */
 
 .room p{
 
-    font-size: 16px;
+    margin:8px 0;
 
-    line-height: 1.6;
-
-    margin-bottom: 10px;
 }
-
-
-/* =========================
-   ROOM BUTTON
-========================= */
 
 .room button{
 
-    margin-top: 20px;
+    margin-top:15px;
+
 }
 
+/* ==========================
+   BOOKINGS
+========================== */
 
-/* =========================
-   ROOM STATUS
-========================= */
+#bookingList{
 
-.available{
+    display:grid;
 
-    color: limegreen;
+    gap:20px;
 
-    font-weight: bold;
+    margin-top:30px;
 
-    font-size: 17px;
 }
 
+/* ==========================
+   PAYMENTS
+========================== */
 
-.booked{
+#paymentList{
 
-    color: red;
+    display:grid;
 
-    font-weight: bold;
+    gap:20px;
 
-    font-size: 17px;
+    margin-top:30px;
+
 }
 
+/* ==========================
+   CONTACT
+========================== */
 
-/* =========================
-   BOOKING PAGE
-========================= */
+textarea{
 
-#bookingForm{
+    height:140px;
 
-    width: 450px;
 }
 
-
-/* =========================
-   REGISTER PAGE
-========================= */
-
-#registerForm{
-
-    width: 450px;
-}
-
-
-/* =========================
-   LOGIN PAGE
-========================= */
-
-#loginForm{
-
-    width: 450px;
-}
-
-
-/* =========================
-   CONTACT PAGE
-========================= */
-
-#contactForm{
-
-    width: 500px;
-}
-
-
-/* =========================
-   CONTACT MESSAGE BOX
-========================= */
-
-#contactForm textarea{
-
-    min-height: 180px;
-}
-
-
-/* =========================
-   FORM LABELS
-========================= */
-
-label{
-
-    display: block;
-
-    margin-bottom: 8px;
-
-    font-size: 15px;
-
-    font-weight: bold;
-}
-
-
-/* =========================
-   SUCCESS MESSAGE
-========================= */
-
-.success{
-
-    color: limegreen;
-
-    font-size: 16px;
-
-    text-align: center;
-
-    margin-top: 15px;
-}
-
-
-/* =========================
-   ERROR MESSAGE
-========================= */
-
-.error{
-
-    color: red;
-
-    font-size: 16px;
-
-    text-align: center;
-
-    margin-top: 15px;
-}
-
-
-/* =========================
-   CARD SHADOW
-========================= */
-
-.shadow{
-
-    box-shadow: 0 0 20px rgba(255,215,0,.2);
-}
-
-
-/* =========================
-   TEXT ALIGNMENT
-========================= */
-
-.center{
-
-    text-align: center;
-}
-
-
-/* =========================
-   SPACING
-========================= */
-
-.mt-20{
-
-    margin-top: 20px;
-}
-
-.mt-30{
-
-    margin-top: 30px;
-}
-
-.mt-40{
-
-    margin-top: 40px;
-}
-
-.mb-20{
-
-    margin-bottom: 20px;
-}
-
-.mb-30{
-
-    margin-bottom: 30px;
-}
-
-.mb-40{
-
-    margin-bottom: 40px;
-}
-
-
-/* =========================
-   ANIMATIONS
-========================= */
-
-@keyframes slideUp{
-
-    from{
-
-        opacity: 0;
-
-        transform: translateY(40px);
-    }
-
-    to{
-
-        opacity: 1;
-
-        transform: translateY(0);
-    }
-}
-
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity: 0;
-    }
-
-    to{
-
-        opacity: 1;
-    }
-}
-
-
-/* =========================
-   HOVER EFFECTS
-========================= */
-
-input:hover,
-textarea:hover,
-select:hover{
-
-    box-shadow: 0 0 10px rgba(255,215,0,.25);
-}
-
-
-/* =========================
+/* ==========================
    LINKS
-========================= */
+========================== */
 
-a{
+p{
 
-    transition: .3s;
+    text-align:center;
+
 }
 
+p a{
 
-a:hover{
+    color:#1e3a8a;
 
-    color: gold;
+    text-decoration:none;
+
 }
 
+p a:hover{
 
-/* =========================
-   SCROLLBAR
-========================= */
+    text-decoration:underline;
 
-::-webkit-scrollbar{
-
-    width: 10px;
 }
 
-::-webkit-scrollbar-track{
-
-    background: #111;
-}
-
-::-webkit-scrollbar-thumb{
-
-    background: gold;
-
-    border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-    background: white;
-}
-/* =========================
-   BUTTONS
-========================= */
-
-button {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-    transition: 0.3s ease;
-}
-
-button:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-}
-
-/* Primary Button */
-.btn-primary {
-    background-color: #3498db;
-    color: white;
-}
-
-/* Success Button */
-.btn-success {
-    background-color: #2ecc71;
-    color: white;
-}
-
-/* Danger Button */
-.btn-danger {
-    background-color: #e74c3c;
-    color: white;
-}
-
-/* Warning Button */
-.btn-warning {
-    background-color: #f1c40f;
-    color: black;
-}
-
-/* =========================
-   TABLES
-========================= */
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-table thead {
-    background-color: #34495e;
-    color: white;
-}
-
-table th, table td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-table tr:hover {
-    background-color: #f2f2f2;
-}
-
-/* =========================
-   FORM STYLING
-========================= */
-
-form {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-form input,
-form select,
-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-/* =========================
+/* ==========================
    FOOTER
-========================= */
+========================== */
 
-footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #2c3e50;
-    color: white;
-    margin-top: 30px;
+footer{
+
+    margin-top:50px;
+
+    background:#1e3a8a;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
 }
 
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
+/* ==========================
+   MOBILE
+========================== */
 
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-        padding: 10px;
+@media(max-width:768px){
+
+    nav{
+
+        flex-direction:column;
+
+        gap:15px;
+
     }
 
-    table th, table td {
-        font-size: 12px;
-        padding: 8px;
+    .hero h2{
+
+        font-size:36px;
+
     }
 
-    form {
-        width: 95%;
+    .hero p{
+
+        font-size:18px;
+
     }
 
-    button {
-        width: 100%;
-        margin-top: 10px;
-    }
 }
