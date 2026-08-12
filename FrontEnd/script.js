@@ -58,11 +58,18 @@ function logout(e) {
 // ------------------------------
 
 function goToRooms() {
-
-    window.location.href = "rooms.html";
-
+    window.location.href = "adminLogin.html";
 }
 
+function adminLogout() {
+
+    sessionStorage.removeItem("isAdmin");
+
+    sessionStorage.removeItem("adminToken");
+
+    window.location.href =
+        "adminLogin.html";
+}
 
 // ------------------------------
 // Register
