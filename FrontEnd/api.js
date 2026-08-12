@@ -1,8 +1,6 @@
-const API = "http://localhost:5092/api";
-
+const API = "https://localhost:7138/api";
 
 async function getData(endpoint) {
-
     const response = await fetch(`${API}/${endpoint}`);
 
     if (!response.ok) {
@@ -11,7 +9,6 @@ async function getData(endpoint) {
 
     return await response.json();
 }
-
 
 async function postData(endpoint, data) {
 
@@ -24,21 +21,17 @@ async function postData(endpoint, data) {
         },
 
         body: JSON.stringify(data)
-
     });
-
 
     if (!response.ok) {
         const errorText = await response.text();
         throw new Error(errorText || "Something went wrong");
     }
 
-
     const text = await response.text();
 
     return text ? JSON.parse(text) : {};
 }
-
 
 async function putData(endpoint, data) {
 
@@ -51,21 +44,17 @@ async function putData(endpoint, data) {
         },
 
         body: JSON.stringify(data)
-
     });
-
 
     if (!response.ok) {
         const errorText = await response.text();
         throw new Error(errorText || "Something went wrong");
     }
 
-
     const text = await response.text();
 
     return text ? JSON.parse(text) : {};
 }
-
 
 async function deleteData(endpoint) {
 
@@ -75,12 +64,10 @@ async function deleteData(endpoint) {
 
     });
 
-
     if (!response.ok) {
         const errorText = await response.text();
         throw new Error(errorText || "Something went wrong");
     }
-
 
     return true;
 }
