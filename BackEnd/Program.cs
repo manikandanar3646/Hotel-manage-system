@@ -12,29 +12,6 @@ builder.Services.AddDbContext<HotelDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-
-// ==============================
-// CORS
-// ==============================
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
-
-
-// ==============================
-// JWT Authentication
-// ==============================
-
 builder.Services.AddAuthentication(
     JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -43,11 +20,8 @@ builder.Services.AddAuthentication(
             new TokenValidationParameters
             {
                 ValidateIssuer = true,
-
                 ValidateAudience = true,
-
                 ValidateLifetime = true,
-
                 ValidateIssuerSigningKey = true,
 
                 ValidIssuer =
@@ -59,16 +33,24 @@ builder.Services.AddAuthentication(
                 IssuerSigningKey =
                     new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(
-                            builder.Configuration["Jwt:Key"]!
-                        )
-                    )
+                            builder.Configuration["Jwt:Key"]!))
             };
     });
 
+builder.Services.AddAuthorization();
 
-// ==============================
-// Build
-// ==============================
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
