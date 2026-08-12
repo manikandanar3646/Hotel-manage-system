@@ -2,6 +2,13 @@
 // rooms.js
 // ================================
 
+if (sessionStorage.getItem("isAdmin") !== "true") {
+
+    alert("Access denied. Admin login required.");
+
+    window.location.href = "adminLogin.html";
+}
+
 async function loadRooms() {
 
     try {
