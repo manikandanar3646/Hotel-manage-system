@@ -2,11 +2,6 @@
 // Hotel Management System
 // script.js
 // ==========================================
-
-// ------------------------------
-// Navigation Login State
-// ------------------------------
-
 function updateNavAuthState() {
 
     const nav = document.getElementById("navAuthSlot");
