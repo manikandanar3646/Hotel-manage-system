@@ -3,12 +3,12 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rooms</title>
+    <title>Rooms</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -16,60 +16,64 @@
 
 <header>
 
-<nav>
+    <nav>
 
-<h1>Hotel Management</h1>
+        <h1>Hotel Management</h1>
 
-<a href="index.html">Home</a>
-<a href="rooms.html">Rooms</a>
-<a href="booking.html">Booking</a>
-<a href="contact.html">Contact</a>
+        <a href="index.html">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="booking.html">Booking</a>
+        <a href="contact.html">Contact</a>
 
-<span id="navAuthSlot">
-<a href="login.html">Login</a>
-</span>
+        <span id="navAuthSlot">
+            <a href="login.html">Login</a>
+        </span>
 
-</nav>
+    </nav>
 
 </header>
 
 <div class="container">
 
-<h2>Available Rooms</h2>
+    <h2>Manage Rooms</h2>
 
-<div class="room-form">
+    <div class="room-form">
 
-<input
-id="roomNumber"
-placeholder="Room Number">
+        <input
+            id="roomNumber"
+            placeholder="Room Number">
 
-<input
-id="roomType"
-placeholder="Room Type">
+        <input
+            id="roomType"
+            placeholder="Room Type">
 
-<input
-id="capacity"
-type="number"
-placeholder="Capacity">
+        <input
+            id="capacity"
+            type="number"
+            placeholder="Capacity">
 
-<input
-id="price"
-type="number"
-placeholder="Price">
+        <input
+            id="price"
+            type="number"
+            placeholder="Price">
 
-<input
-id="imageUrl"
-placeholder="Image URL">
+        <input
+            id="imageUrl"
+            placeholder="Image URL">
 
-<button onclick="addRoom()">
-Add Room
-</button>
+        <button onclick="addRoom()">
+            Add Room
+        </button>
 
-</div>
+        <button onclick="adminLogout()">
+            Admin Logout
+    </button>
 
-<hr>
+    </div>
 
-<div id="roomlist"></div>
+    <hr>
+
+    <div id="roomlist"></div>
 
 </div>
 
