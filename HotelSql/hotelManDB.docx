@@ -1,0 +1,99 @@
+Hotel Management System – SQL Database Queries
+1. Database Tables
+The Hotel Management System database contains the following tables:
+1.	Users 
+2.	Rooms 
+3.	Bookings 
+4.	Payments 
+5.	ContactMessages 
+6.	__EFMigrationsHistory 
+________________________________________
+2. Users Table
+The Users table stores registered user information and login credentials.
+CREATE TABLE [dbo].[Users] (
+    [UserId]       INT            IDENTITY (1, 1) NOT NULL,
+    [Fullname]     NVARCHAR (MAX) NOT NULL,
+    [Email]        NVARCHAR (MAX) NOT NULL,
+    [PasswordHash] NVARCHAR (MAX) NOT NULL,
+    [Role]         NVARCHAR (MAX) NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([UserId] ASC)
+);
+________________________________________
+3. Rooms Table
+The Rooms table stores information about the hotel rooms.
+CREATE TABLE [dbo].[Rooms] (
+    [RoomId]      INT             IDENTITY (1, 1) NOT NULL,
+    [RoomNO]      NVARCHAR (MAX)  NOT NULL,
+    [RoomType]    NVARCHAR (MAX)  NOT NULL,
+    [Price]       DECIMAL (18, 2) NOT NULL,
+    [Capacity]    INT             NOT NULL,
+    [IsAvailable] BIT             NOT NULL,
+    [ImageUrl]    NVARCHAR (MAX)  NOT NULL,
+    CONSTRAINT [PK_Rooms] PRIMARY KEY CLUSTERED ([RoomId] ASC)
+);
+________________________________________
+4. Bookings Table
+The Bookings table stores information about room reservations made by users.
+CREATE TABLE [dbo].[Bookings] (
+    [BookingId]     INT             IDENTITY (1, 1) NOT NULL,
+    [UserId]        INT             NOT NULL,
+    [RoomId]        INT             NOT NULL,
+    [CheckInDate]   DATETIME2 (7)   NOT NULL,
+    [CheckOutDate]  DATETIME2 (7)   NOT NULL,
+    [TotalAmount]   DECIMAL (18, 2) NOT NULL,
+    [BookingStatus] NVARCHAR (MAX)  NOT NULL,
+    CONSTRAINT [PK_Bookings] PRIMARY KEY CLUSTERED ([BookingId] ASC)
+);
+________________________________________
+5. Payments Table
+The Payments table stores payment details associated with hotel bookings.
+CREATE TABLE [dbo].[Payments] (
+    [PaymentId]     INT             IDENTITY (1, 1) NOT NULL,
+    [BookingId]     INT             NOT NULL,
+    [PaymentDate]   DATETIME2 (7)   NOT NULL,
+    [Amount]        DECIMAL (18, 2) NOT NULL,
+    [PaymentMethod] NVARCHAR (MAX)  NOT NULL,
+    [PaymentStatus] NVARCHAR (MAX)  NOT NULL,
+    CONSTRAINT [PK_Payments] PRIMARY KEY CLUSTERED ([PaymentId] ASC)
+);
+________________________________________
+6. ContactMessages Table
+The ContactMessages table stores messages submitted through the hotel's contact form.
+CREATE TABLE [dbo].[ContactMessages] (
+    [MessageId] INT            IDENTITY (1, 1) NOT NULL,
+    [Name]      NVARCHAR (MAX) NOT NULL,
+    [Email]     NVARCHAR (MAX) NOT NULL,
+    [Message]   NVARCHAR (MAX) NOT NULL,
+    [CreatedAt] DATETIME2 (7)  NOT NULL,
+    CONSTRAINT [PK_ContactMessages] PRIMARY KEY CLUSTERED ([MessageId] ASC)
+);
+________________________________________
+7. __EFMigrationsHistory Table
+The __EFMigrationsHistory table is automatically created and maintained by Entity Framework Core.
+CREATE TABLE [dbo].[__EFMigrationsHistory] (
+    [MigrationId]    NVARCHAR (150) NOT NULL,
+    [ProductVersion] NVARCHAR (32)  NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED ([MigrationId] ASC)
+);
+8. Database Relationships
+From the SQL definitions you provided, the tables contain the following ID fields:
+Users
+  │
+  └── UserId
+        │
+        ▼
+     Bookings
+        │
+        ├── UserId
+        │
+        └── RoomId
+              │
+              ▼
+            Rooms
+Bookings
+    │
+    └── BookingId
+          │
+          ▼
+       Payments
+
