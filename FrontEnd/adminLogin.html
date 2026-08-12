@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <h1>Hotel Management</h1>
+
+        <a href="index.html">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="booking.html">Booking</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <h2>Admin Login</h2>
+
+    <form id="adminLoginForm">
+
+        <input
+            type="email"
+            id="adminEmail"
+            placeholder="Admin Email"
+            required>
+
+        <input
+            type="password"
+            id="adminPassword"
+            placeholder="Admin Password"
+            required>
+
+        <button type="submit">
+            Admin Login
+        </button>
+
+    </form>
+
+</div>
+
+
+<script src="api.js"></script>
+<script src="admin.js"></script>
+
+</body>
+
+</html>
